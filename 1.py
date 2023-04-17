@@ -7,10 +7,9 @@ def data_import():
 
 
 def item_import():
-    lis = ['movie_id', 'movie_name', 'time', 'unix-imdb_url', 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-           21, 22, 23, 24]
-    item_csv = pd.read_csv(r'./data/u.item', sep="|", encoding="ISO-8859-1",
-                           names=lis)  # names=['movie_id','unix-imdb_url']
+    lis = [['movie_id', 'movie_name', 'time', 'unix-imdb_url'], list(range(5, 25))]
+    item_csv = pd.read_csv(r'./data/u.item', sep="|", encoding="ISO-8859-1", names=lis[0]+lis[1])
+
     return item_csv
 
 
