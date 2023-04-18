@@ -63,9 +63,10 @@ if __name__ == "__main__":
     # print(item_import().head())
     # # 查看数据表的信息  可以查看是否存在缺失值，
     # print(item_import().info())
-    # # 3.1查看是否存在缺失值      结论: video_release_date列无数据 直接删除
+    # # 3.1查看是否存在缺失值      结论: video_release_date列无数据 直接删除 对于title数据为unknown的直接删除行  unix-imdb_url/release_date 不需要处理
     # print(item_import().isnull().any())
     item_csv = item_import().drop("video_release_date", axis=1)
+    print(item_csv[item_csv.isnull().values == True])
     # # 3.2 查看是否存在重复值 根据业务而定，评分人群是一个范围值，而不是具体特质的人
     # # 3.3 查看是否异常值 根据业务而定，年龄和性别是涉及到后续的特征提取       设置了数据范围==========年龄（6，75），性别（F/M)
     # # 年龄（6，75)
